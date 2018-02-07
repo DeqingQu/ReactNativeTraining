@@ -16,6 +16,8 @@ import HelloWorldComponent from "./src/HelloWorld"
 import GreetingComponent from "./src/Greeting"
 import Blink from "./src/Blink"
 import StyleComponent from "./src/Style"
+import FixedDimensionsBasics from "./src/FixedDimensionsBasics"
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -47,7 +49,10 @@ export default class App extends Component<Props> {
         // </View>
 
         /*  Style   */
-        <StyleComponent />
+        // <StyleComponent />
+
+        /*  Fixed Dimenstions   */
+        <FixedDimensionsBasics />
     );
   }
 }
