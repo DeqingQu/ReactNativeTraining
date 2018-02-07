@@ -14,6 +14,7 @@ import {
 
 import HelloWorldComponent from "./src/HelloWorld"
 import GreetingComponent from "./src/Greeting"
+import Blink from "./src/Blink"
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -32,10 +33,16 @@ export default class App extends Component<Props> {
         // </View>
 
         /*  Props   */
+        // <View style={styles.container}>
+        //     <GreetingComponent name='Alice' />
+        //     <GreetingComponent name='Bob' />
+        //     <GreetingComponent name='Charlie' />
+        // </View>
+
+        /*  state   */
         <View style={styles.container}>
-            <GreetingComponent name='Alice' />
-            <GreetingComponent name='Bob' />
-            <GreetingComponent name='Charlie' />
+            <Blink text='I love to blink' />
+            <Blink text='Yes blinking is so great' />
         </View>
     );
   }
