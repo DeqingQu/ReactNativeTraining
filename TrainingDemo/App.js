@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import HelloWorldComponent from "./src/HelloWorld"
+import GreetingComponent from "./src/Greeting"
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -25,9 +26,17 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <HelloWorldComponent />
-      </View>
+        /*  HelloWorld Component    */
+        // <View style={styles.container}>
+        //   <HelloWorldComponent />
+        // </View>
+
+        /*  Props   */
+        <View style={styles.container}>
+            <GreetingComponent name='Alice' />
+            <GreetingComponent name='Bob' />
+            <GreetingComponent name='Charlie' />
+        </View>
     );
   }
 }
