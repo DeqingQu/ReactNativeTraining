@@ -19,6 +19,8 @@ import StyleComponent from "./src/Style"
 import FixedDimensionsBasics from "./src/FixedDimensionsBasics"
 import FlexDimensionsBasics from "./src/FlexDimensionsBasics"
 import FlexDirectionBasics from "./src/FlexDirectionBasics"
+import ButtonBasics from "./src/ButtonBasics"
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -59,7 +61,11 @@ export default class App extends Component<Props> {
         // <FlexDimensionsBasics />
 
         /*  Flex Direction  */
-        <FlexDirectionBasics />
+        // <FlexDirectionBasics />
+
+        /*  Button Basics   */
+        <ButtonBasics />
+
     );
   }
 }
