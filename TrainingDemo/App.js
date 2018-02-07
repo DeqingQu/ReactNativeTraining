@@ -40,9 +40,17 @@ export default class App extends Component<Props> {
         // </View>
 
         /*  state   */
+        // <View style={styles.container}>
+        //     <Blink text='I love to blink' />
+        //     <Blink text='Yes blinking is so great' />
+        // </View>
+
+        /*  Style   */
         <View style={styles.container}>
-            <Blink text='I love to blink' />
-            <Blink text='Yes blinking is so great' />
+            <Text style={styles.red}>just red</Text>
+            <Text style={styles.bigblue}>just bigblue</Text>
+            <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+            <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
         </View>
     );
   }
@@ -66,5 +74,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  bigblue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
   },
 });
