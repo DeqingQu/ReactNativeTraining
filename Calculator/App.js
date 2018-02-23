@@ -25,7 +25,7 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { display: 0, step: 0, op1: null, op: 0, decimal: 0 };
+    this.state = { display: '0', step: 0, op1: null, op: 0, decimal: 0 };
   }
 
   clickNumber(number) {
@@ -79,10 +79,19 @@ export default class App extends Component {
         <View style={{ backgroundColor: 'white', flex: 0.7, flexDirection: 'column', justifyContent: 'space-between' }}>
           <View style={{ backgroundColor: 'blue', flex: 0.18, flexDirection: 'row', justifyContent: 'space-between', marginLeft: 10, marginRight: 10 }}>
             <NumberButton flexW='0.22' number='C' clickHandler={() => {
-              this.setState({ display: 0, step: 0, op1: null, op: 0, decimal: 0 });
+              this.setState({ display: '0', step: 0, op1: null, op: 0, decimal: 0 });
             }} />
-            <NumberButton flexW='0.22' number='+/-' clickHandler={this.clickNumber.bind(this)} />
-            <NumberButton flexW='0.22' number='%' clickHandler={this.clickNumber.bind(this)} />
+            <NumberButton flexW='0.22' number='+/-' clickHandler={() => {
+              if (this.state.display.charAt(0) == '-') {
+                this.setState({ display: this.state.display.slice(1) });
+              }
+              else {
+                this.setState({ display: '-' + this.state.display });
+              }
+            }} />
+            <NumberButton flexW='0.22' number='%' clickHandler={() => {
+              this.setState({ display: (parseFloat(this.state.display) / 100).toString() });
+            }} />
             <NumberButton flexW='0.22' number='/' clickHandler={() => {
               this.clickOperator(4);
             }} />
