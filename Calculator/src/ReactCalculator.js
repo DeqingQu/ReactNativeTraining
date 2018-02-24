@@ -8,10 +8,10 @@ import Style from './Style';
 import InputButton from './InputButton';
 
 const inputButtons = [
-    [1, 2, 3, '/'],
+    [7, 8, 9, '/'],
     [4, 5, 6, '*'],
-    [7, 8, 9, '-'],
-    [0, '.', '=', '+']
+    [1, 2, 3, '-'],
+    [0, 'C', '=', '+']
 ];
 
 export default class ReactCalculator extends Component {
@@ -23,7 +23,8 @@ export default class ReactCalculator extends Component {
             displayValue: 0,
             previousInputValue: 0,
             inputValue: 0,
-            selectedSymbol: null
+            selectedSymbol: null,
+            hasResult: false
         }
         this._outputState();
     }
@@ -86,13 +87,26 @@ export default class ReactCalculator extends Component {
     }
 
     _handleNumberInput(num) {
-        let inputValue = (this.state.inputValue * 10) + num;
-        this.setState({
-            inputValue: inputValue,
-            displayValue: inputValue
-        }, function() {
-            this._outputState();
-        });
+        if(this.state.hasResult && this.state.selectedSymbol == null) {
+            this.setState({
+                inputValue: num,
+                displayValue: num,
+                previousInputValue: 0,
+                selectedSymbol: null,
+                hasResult: false
+            }, function() {
+                this._outputState();
+            });
+        }
+        else {
+            let inputValue = (this.state.inputValue * 10) + num;
+            this.setState({
+                inputValue: inputValue,
+                displayValue: inputValue
+            }, function() {
+                this._outputState();
+            });
+        }
     }
 
     _handleStringInput(str) {
@@ -122,7 +136,19 @@ export default class ReactCalculator extends Component {
                     displayValue: result,
                     previousInputValue: 0,
                     inputValue: result,
-                    selectedSymbol: null
+                    selectedSymbol: null,
+                    hasResult: true
+                }, function() {
+                    this._outputState();
+                });
+                break;
+            case 'C':
+                this.setState({
+                    displayValue: 0,
+                    previousInputValue: 0,
+                    inputValue: 0,
+                    selectedSymbol: null,
+                    hasResult: false
                 }, function() {
                     this._outputState();
                 });
