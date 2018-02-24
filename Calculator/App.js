@@ -124,9 +124,9 @@ export default class App extends Component {
             <NumberButton flexW='0.48' number='0' clickHandler={this.clickNumber.bind(this)} />
             <NumberButton flexW='0.22' number='.' clickHandler={() => {
               if (this.state.decimal == 0) {
-                if (step == 0) {
+                if ( this.state.step == 0  || this.state.step == 2) {
                   dis = '0';
-                  this.setState({ step: 1 });
+                  this.setState({ step: this.state.step + 1 });
                 }
                 this.setState({ display: dis + '.' });
               }
