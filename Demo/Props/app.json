@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "TrainingDemo",
+    "name": "Props",
     "description": "This project is really great.",
-    "slug": "TrainingDemo",
+    "slug": "Props",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],

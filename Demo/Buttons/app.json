@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "States",
+    "name": "Buttons",
     "description": "This project is really great.",
-    "slug": "States",
+    "slug": "Buttons",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],
