@@ -16,15 +16,38 @@ const inputButtons = [
 
 export default class ReactCalculator extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            displayValue: 0,
+            previousInputValue: 0,
+            inputValue: 0,
+            selectedSymbol: null
+        }
+        this._outputState();
+    }
+
     render() {
         return (
             <View style={Style.rootContainer}>
-                <View style={Style.displayContainer}></View>
+                <View style={Style.displayContainer}>
+                    <Text style={Style.displayText}>{this.state.displayValue}</Text>
+                </View>
                 <View style={Style.inputContainer}>
                     {this._renderInputButtons()}
                 </View>
             </View>
         )
+    }
+
+    _outputState() {
+        let symbol = this.state.selectedSymbol,
+            inputValue = this.state.inputValue,
+            previousInputValue = this.state.previousInputValue;
+        console.log(previousInputValue);
+        console.log(symbol);
+        console.log(inputValue);
     }
 
     _renderInputButtons() {
@@ -38,11 +61,73 @@ export default class ReactCalculator extends Component {
                 let input = row[i];
 
                 inputRow.push(
-                    <InputButton value={input} key={r + "-" + i} />
+                    <InputButton
+                        value={input}
+                        highlight={this.state.selectedSymbol === input}
+                        onPress={this._onInputButtonPressed.bind(this, input)}
+                        key={r + "-" + i} />
                 );
             }
             views.push(<View style={Style.inputRow} key={"row-" + r}>{inputRow}</View>)
         }
         return views;
+    }
+
+    _onInputButtonPressed(input) {
+        switch (typeof input) {
+            case 'number':
+                this._handleNumberInput(input);
+                break;
+            case 'string':
+                this._handleStringInput(input);
+                break;
+            default:
+        }
+    }
+
+    _handleNumberInput(num) {
+        let inputValue = (this.state.inputValue * 10) + num;
+        this.setState({
+            inputValue: inputValue,
+            displayValue: inputValue
+        }, function() {
+            this._outputState();
+        });
+    }
+
+    _handleStringInput(str) {
+        switch (str) {
+            case '/':
+            case '*':
+            case '+':
+            case '-':
+                this.setState({
+                    selectedSymbol: str,
+                    previousInputValue: this.state.inputValue,
+                    inputValue: 0
+                }, function() {
+                    this._outputState();
+                });
+                break;
+            case '=':
+                let symbol = this.state.selectedSymbol,
+                    inputValue = this.state.inputValue,
+                    previousInputValue = this.state.previousInputValue;
+
+                if (!symbol) {
+                    return;
+                }
+                let result = eval(previousInputValue + symbol + inputValue);
+                this.setState({
+                    displayValue: result,
+                    previousInputValue: 0,
+                    inputValue: result,
+                    selectedSymbol: null
+                }, function() {
+                    this._outputState();
+                });
+                break;
+            default:
+        }
     }
 }
