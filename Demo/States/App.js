@@ -1,16 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Blink from "./src/Blink"
+import Counter from "./src/Counter"
 
 export default class App extends React.Component {
   render() {
     return (
-
           /*  state   */
           <View style={styles.container}>
-              <Blink text='I love to blink' />
-              <Blink text='Yes blinking is so great' />
+              <Counter text='I love to count: ' />
           </View>
     );
   }
