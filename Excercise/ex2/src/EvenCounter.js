@@ -19,7 +19,13 @@ export default class EvenCounter extends Component {
     render() {
         let display = this.props.text + " " + this.state.counter;
         return (
-            <Text>{display}</Text>
+            <Text style={styles.text}>{display}</Text>
         );
     }
 }
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 30,
+  }
+});
