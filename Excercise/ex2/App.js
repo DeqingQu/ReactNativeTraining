@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import Counter from "./src/Counter"
 import EvenCounter from "./src/EvenCounter"
 
 export default class App extends React.Component {
     render() {
       return (
             <View style={styles.container}>
-                <EvenCounter text='I love even counter: ' />
+                <Counter text="I love counter: " />
+                <EvenCounter text="I love even counter: " />
             </View>
       );
     }
