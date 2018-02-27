@@ -15,7 +15,7 @@ export default class Counter extends Component {
                 counter: counter
             });
         }, 1000);
-  }
+    }
 
     render() {
         let display = this.props.text + " " + this.state.counter;
