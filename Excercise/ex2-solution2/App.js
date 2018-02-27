@@ -7,8 +7,8 @@ export default class App extends React.Component {
     render() {
       return (
             <View style={styles.container}>
-                <Counter text="I love counter: " step='1' />
-                <Counter text="I love even counter: " step='2' />
+                <Counter text={"I love counter: "} step={1} />
+                <Counter text={"I love even counter: "} step={2} />
             </View>
       );
     }
