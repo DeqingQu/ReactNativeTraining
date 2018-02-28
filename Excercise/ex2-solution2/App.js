@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import ReactCalculator from "./src/ReactCalculator"
+import Counter from "./src/Counter"
 
 export default class App extends React.Component {
-  render() {
-    return (
-        <ReactCalculator />
-    );
-  }
+    render() {
+      return (
+            <View style={styles.container}>
+                <Counter text={"I love counter: "} step={1} />
+                <Counter text={"I love even counter: "} step={2} />
+            </View>
+      );
+    }
 }
 
 const styles = StyleSheet.create({
